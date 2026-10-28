@@ -1,10 +1,10 @@
-# chama-tracker
+# chama-tracker-backend
 
 A REST API that lets a chama treasurer track members, contributions and arrears, and collect contributions over M-Pesa.
 
 A *chama* is a Kenyan savings group. Members pay a fixed amount every week or month, and the treasurer tracks who has paid, who is behind and who has paid ahead. chama-tracker keeps that record and lets members pay by M-Pesa. It can use [Paystack](https://paystack.com) (the default) or Safaricom's [Daraja](https://developer.safaricom.co.ke) API.
 
-![Python](https://img.shields.io/badge/python-3.12-blue) ![Django](https://img.shields.io/badge/django-5.2-green) ![DRF](https://img.shields.io/badge/DRF-3.18-red) ![Tests](https://img.shields.io/badge/tests-pytest-yellow)
+![Python](https://img.shields.io/badge/python-3.12-blue) ![Django](https://img.shields.io/badge/django-5.2-green) ![DRF](https://img.shields.io/badge/DRF-3.18-red) ![Tests](https://img.shields.io/badge/tests-pytest-yellow) [![License: MIT](https://img.shields.io/badge/license-MIT-lightgrey)](LICENSE)
 
 ## Contents
 
@@ -20,6 +20,7 @@ A *chama* is a Kenyan savings group. Members pay a fixed amount every week or mo
 - [Running the tests](#running-the-tests)
 - [Deployment notes](#deployment-notes)
 - [Known limitations](#known-limitations)
+- [License](#license)
 
 ## Features
 
@@ -38,8 +39,8 @@ A *chama* is a Kenyan savings group. Members pay a fixed amount every week or mo
 You need Python 3.12 or newer. These steps were tested on Ubuntu (WSL).
 
 ```bash
-git clone git@github.com:JessyWaweru/chama-tracker.git
-cd chama-tracker
+git clone git@github.com:JessyWaweru/chama-tracker-backend.git
+cd chama-tracker-backend
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
@@ -324,3 +325,7 @@ Every Paystack and Daraja HTTP call is mocked, and any unmocked network call fai
 - **Missing receipts**: payments confirmed through Daraja's `stk_query` have no receipt unless the callback arrives later. Paystack test mode reuses the same receipt number on every charge, so after the first, receipts are stored as missing rather than blocking confirmation.
 - **No deactivation date**: the app doesn't record when a member left, so a deactivated member's arrears from before they left aren't counted.
 - **No pagination** on list endpoints yet.
+
+## License
+
+[MIT](LICENSE) © 2026 WAWERU B NJIHIA
